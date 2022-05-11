@@ -43,7 +43,7 @@ export class PopupComponents implements OnInit {
 
   onFileChanged(e: any) {
 
-    if (e.target.files && e.target.files.length > 0) {
+    if (e.target.files && e.target.files.length) {
       const reader = new FileReader();
       const [file] = e.target.files;
       reader.readAsDataURL(file);
@@ -53,7 +53,7 @@ export class PopupComponents implements OnInit {
         this.myform.patchValue({
           avatar: reader.result
         });
-        
+
         // for image load or preview
         const reader1 = new FileReader();
 
