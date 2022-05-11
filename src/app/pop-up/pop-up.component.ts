@@ -9,7 +9,7 @@ import { BsModalRef } from "ngx-bootstrap/modal";
 export class PopupComponents implements OnInit {
 
   title?: string;
-  closeBtnName?: string="Close";
+  closeBtnName?: string = "Close";
   btn?: string;
   value?: string;
   list: any[] = [];
@@ -18,6 +18,8 @@ export class PopupComponents implements OnInit {
   showimg: boolean = false;
   empdata: any;
   message: string = "";
+  imgFile!: string;
+  imageSrc: any;
 
   constructor(
     public bsModalRef: BsModalRef,
@@ -37,12 +39,27 @@ export class PopupComponents implements OnInit {
     }
 
 
-  } 
-
-  onFileChanged(event:any) {
-    const file = event.target.files[0]
   }
- 
+
+  onFileChanged(e: any) {
+    const reader = new FileReader();
+
+    if (e.target.files && e.target.files.length > 0) {
+      const [file] = e.target.files;
+      reader.readAsDataURL(file);
+
+      reader.onload = () => {
+        this.imgFile = reader.result as string;
+        this.myform.patchValue({
+          avatar: reader.result
+        });
+        const myfile = e.target.files[0];
+        reader.onload = e => this.imageSrc = reader.result as string;
+        reader.readAsDataURL(myfile);
+      };
+    }
+  }
+
 
   myform = this.fb.group(
     {
@@ -50,12 +67,12 @@ export class PopupComponents implements OnInit {
       fname: new FormControl(""),
       lname: new FormControl(""),
       email: new FormControl(""),
-      avatar: new FormControl(""),
+      avatar: new FormControl(null),
 
     }
   );
 
-  save() {
+  saveData() {
     if (!this.empdata) {
       if (this.myform.valid) {
         console.log(this.myform.value);

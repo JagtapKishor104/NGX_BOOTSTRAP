@@ -43,7 +43,7 @@ export class AppComponent implements OnInit {
           '...'
         ],
         title: 'Add A Employee',
-        btn: "save",
+        btn: "Submit",
         showimg: true,
       }
     };
