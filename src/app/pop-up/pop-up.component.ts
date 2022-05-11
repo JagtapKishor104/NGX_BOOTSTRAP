@@ -99,12 +99,21 @@ export class PopupComponents implements OnInit {
           confirmButtonText: 'Yes, Add it!'
         }).then((result) => {
           if (result.isConfirmed) {
-            Swal.fire(
-              'Saved',
-              'Data Saved Successfully',
-              'success',
-
-            )
+            const Toast = Swal.mixin({
+              toast: true,
+              position: 'top-end',
+              showConfirmButton: false,
+              timer: 2000,
+              timerProgressBar: true,
+              // didOpen: (toast) => {
+              //   toast.addEventListener('mouseenter', Swal.stopTimer)
+              //   toast.addEventListener('mouseleave', Swal.resumeTimer)
+              // }
+            })
+            Toast.fire({
+              icon: 'success',
+              title: 'Employee Added'
+            })
             console.log(this.myform.value);
             this.myform.reset();
             this.bsModalRef.hide();
@@ -129,10 +138,10 @@ export class PopupComponents implements OnInit {
           showConfirmButton: false,
           timer: 2000,
           timerProgressBar: true,
-          didOpen: (toast) => {
-            toast.addEventListener('mouseenter', Swal.stopTimer)
-            toast.addEventListener('mouseleave', Swal.resumeTimer)
-          }
+          // didOpen: (toast) => {
+          //   toast.addEventListener('mouseenter', Swal.stopTimer)
+          //   toast.addEventListener('mouseleave', Swal.resumeTimer)
+          // }
         })
 
         Toast.fire({
@@ -159,10 +168,10 @@ export class PopupComponents implements OnInit {
         showConfirmButton: false,
         timer: 2000,
         timerProgressBar: true,
-        didOpen: (toast) => {
-          toast.addEventListener('mouseenter', Swal.stopTimer)
-          toast.addEventListener('mouseleave', Swal.resumeTimer)
-        }
+        // didOpen: (toast) => {
+        //   toast.addEventListener('mouseenter', Swal.stopTimer)
+        //   toast.addEventListener('mouseleave', Swal.resumeTimer)
+        // }
       })
 
       Toast.fire({

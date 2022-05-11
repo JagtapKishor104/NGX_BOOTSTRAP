@@ -89,12 +89,21 @@ export class AppComponent implements OnInit {
           confirmButtonText: 'Yes, Delete it!'
         }).then((result) => {
           if (result.isConfirmed) {
-            Swal.fire(
-              'Deleted',
-              'Data Deleted Successfully',
-              'success',
-
-            )
+            const Toast = Swal.mixin({
+              toast: true,
+              position: 'top-end',
+              showConfirmButton: false,
+              timer: 2000,
+              timerProgressBar: true,
+              // didOpen: (toast) => {
+              //   toast.addEventListener('mouseenter', Swal.stopTimer)
+              //   toast.addEventListener('mouseleave', Swal.resumeTimer)
+              // }
+            })
+            Toast.fire({
+              icon: 'success',
+              title: 'Employee Deleted'
+            })
 
             this.getusers();
             console.log(id);
