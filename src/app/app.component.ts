@@ -1,10 +1,86 @@
-import { Component } from '@angular/core';
-
+import { Component, OnInit } from '@angular/core';
+import { PopupComponents } from './pop-up/pop-up.component';
+import { BsModalRef, BsModalService, ModalOptions } from "ngx-bootstrap/modal";
+import { ApiService } from './Service/api.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
-  title = 'employee-database';
+export class AppComponent implements OnInit {
+
+  bsModalRef?: BsModalRef;
+  Data: any;
+  // showimg:boolean=false;
+
+  constructor(
+    private modalService: BsModalService,
+    private api: ApiService
+
+
+  ) { }
+  ngOnInit(): void {
+    this.getusers();
+  }
+  getusers() {
+    this.api.getuser().subscribe({
+      next: (res) => {
+        this.Data = res.data;
+        console.log(this.Data);
+
+      }
+    })
+  }
+
+
+  openModalWithComponent() {
+    const initialState: ModalOptions = {
+      initialState: {
+        list: [
+          'Open a modal with component',
+          'Pass your data',
+          'Do something else',
+          '...'
+        ],
+        title: 'Add A Employee',
+        btn: "save",
+        showimg: true,
+      }
+    };
+    this.bsModalRef = this.modalService.show(PopupComponents, initialState);
+    this.bsModalRef.content.closeBtnName = 'Close';
+
+  }
+  openEditComponent(d: any) {
+    const initialState: ModalOptions = {
+      initialState: {
+
+        editlist: [
+          'Open beacuse of call edit method',
+
+        ],
+
+
+        title: 'Update Data',
+        btn: "Update",
+        empdata: d,
+
+
+      }
+    };
+    this.bsModalRef = this.modalService.show(PopupComponents, initialState);
+    this.bsModalRef.content.closeBtnName = 'Close';
+
+  }
+  deleteData(id: any) {
+    this.api.deleteuser(id).subscribe({
+      next: (res) => {
+        alert("Delete Successfully");
+        this.getusers();
+        console.log(id);
+
+
+      }
+    })
+  }
 }
