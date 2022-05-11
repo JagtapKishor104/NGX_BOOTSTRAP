@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { BsModalRef } from "ngx-bootstrap/modal";
 import { ApiService } from '../api.service';
 @Component({
@@ -89,6 +89,7 @@ export class PopupComponents implements OnInit {
         console.log(this.myform.value);
         this.myform.reset();
         this.bsModalRef.hide();
+        alert("Data Added")
       }
       else {
         this.message = "All Values Are Required";
@@ -105,6 +106,7 @@ export class PopupComponents implements OnInit {
       console.log("Updated Values in form", this.myform.value);
       this.myform.reset();
       this.bsModalRef.hide();
+      alert("Updated")
 
 
     }
