@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { PopupComponents } from './pop-up/pop-up.component';
 import { BsModalRef, BsModalService, ModalOptions } from "ngx-bootstrap/modal";
 import { ApiService } from './Service/api.service';
+import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -52,10 +54,10 @@ export class AppComponent implements OnInit {
 
   }
   openEditComponent(d: any) {
-  
+
     const initialState: ModalOptions = {
       initialState: {
-        
+
         editlist: [
           'Open beacuse of call edit method',
         ],
@@ -74,13 +76,44 @@ export class AppComponent implements OnInit {
 
   }
   deleteData(id: any) {
+
     this.api.deleteuser(id).subscribe({
       next: (res) => {
-        alert("Delete Successfully");
-        this.getusers();
-        console.log(id);
+        Swal.fire({
+          title: 'Do You Want Delete',
+          text: "",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, Delete it!'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            Swal.fire(
+              'Deleted',
+              'Data Deleted Successfully',
+              'success',
+
+            )
+
+            this.getusers();
+            console.log(id);
+
+
+
+
+          }
+          else {
+
+          }
+
+
+        })
+
+
 
       }
     })
+
   }
 }

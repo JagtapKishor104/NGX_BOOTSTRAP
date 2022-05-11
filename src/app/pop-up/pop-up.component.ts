@@ -88,7 +88,7 @@ export class PopupComponents implements OnInit {
   saveData() {
     if (!this.empdata) {
       if (this.myform.valid) {
-        
+
         Swal.fire({
           title: 'Do You Want Add',
           text: "",
@@ -103,23 +103,22 @@ export class PopupComponents implements OnInit {
               'Saved',
               'Data Saved Successfully',
               'success',
-              
+
             )
             console.log(this.myform.value);
             this.myform.reset();
             this.bsModalRef.hide();
 
           }
-          else
-          {
+          else {
             this.bsModalRef.hide();
           }
-       
+
 
         })
-       
-       
-       
+
+
+
         // alert("Data Added")
       }
       else {
@@ -135,7 +134,7 @@ export class PopupComponents implements OnInit {
             toast.addEventListener('mouseleave', Swal.resumeTimer)
           }
         })
-        
+
         Toast.fire({
           icon: 'error',
           title: 'All Values Are Required'
@@ -165,7 +164,7 @@ export class PopupComponents implements OnInit {
           toast.addEventListener('mouseleave', Swal.resumeTimer)
         }
       })
-      
+
       Toast.fire({
         icon: 'success',
         title: 'Updated successfully'
