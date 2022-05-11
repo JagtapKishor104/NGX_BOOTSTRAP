@@ -26,7 +26,7 @@ export class AppComponent implements OnInit {
     this.api.getuser().subscribe({
       next: (res) => {
         this.Data = res.data;
-        console.log(this.Data);
+        // console.log(this.Data);
 
       }
     })
@@ -52,18 +52,19 @@ export class AppComponent implements OnInit {
 
   }
   openEditComponent(d: any) {
+  
     const initialState: ModalOptions = {
       initialState: {
-
+        
         editlist: [
           'Open beacuse of call edit method',
-
         ],
 
 
         title: 'Update Data',
         btn: "Update",
         empdata: d,
+
 
 
       }
@@ -78,7 +79,6 @@ export class AppComponent implements OnInit {
         alert("Delete Successfully");
         this.getusers();
         console.log(id);
-
 
       }
     })

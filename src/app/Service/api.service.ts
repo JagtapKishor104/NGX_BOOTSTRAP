@@ -6,18 +6,18 @@ import { Observable } from 'rxjs';
 })
 export class ApiService {
 
-  constructor(private http:HttpClient) { }
-  url="https://reqres.in/api/users?page=2";
+  constructor(private http: HttpClient) { }
+  url = "https://reqres.in/api/users?page=2";
 
-  public getuser():Observable<any>
-  {
+  public getuser(): Observable<any> {
     return this.http.get(`${this.url}`);
   }
 
-  deleteurl="https://reqres.in/api/users/";
+  deleteurl = "https://reqres.in/api/users/";
 
-  public deleteuser(id:any):Observable<any>
-  {
+  public deleteuser(id: any): Observable<any> {
     return this.http.delete(`${this.deleteurl}/${id}`);
   }
+
+
 }

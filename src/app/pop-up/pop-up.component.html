@@ -30,11 +30,11 @@
                 (change)="onFileChanged($event)">
             <div class="text-center">
                 <img class="img-thumbnail mt-3 "
-                    [src]="imageSrc || 'https://i.pinimg.com/736x/8b/16/7a/8b167af653c2399dd93b952a48740620.jpg'"
+                    [src]="( imageSrc || logoimage || avatar ) || 'https://i.pinimg.com/736x/8b/16/7a/8b167af653c2399dd93b952a48740620.jpg' "
                     alt="your image" height="200" width="200" />
             </div>
 
-
+            <!-- 'https://i.pinimg.com/736x/8b/16/7a/8b167af653c2399dd93b952a48740620.jpg' || -->
         </div>
         <p class="text-danger">{{message}}</p>
 

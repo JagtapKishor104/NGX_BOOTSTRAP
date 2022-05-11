@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { BsModalRef } from "ngx-bootstrap/modal";
+import { ApiService } from '../api.service';
 @Component({
   selector: 'app-pop-up',
   templateUrl: './pop-up.component.html',
@@ -20,26 +21,28 @@ export class PopupComponents implements OnInit {
   message: string = "";
   imgFile!: any;
   imageSrc: any;
-
+  logoimage!: string;
+  avatar!:string;
   constructor(
     public bsModalRef: BsModalRef,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    public api: ApiService
   ) { }
 
   ngOnInit(): void {
     if (this.empdata) {
       console.log(this.empdata);
+    this.avatar=this.empdata.avatar
+    
       this.myform.controls["id"].setValue(this.empdata.id);
       this.myform.controls["fname"].setValue(this.empdata.first_name);
       this.myform.controls["lname"].setValue(this.empdata.last_name);
       this.myform.controls["email"].setValue(this.empdata.email);
       this.myform.controls["avatar"].setValue(this.empdata.avatar);
-
-
     }
 
-
   }
+  
 
   onFileChanged(e: any) {
 
@@ -51,7 +54,7 @@ export class PopupComponents implements OnInit {
       reader.onload = () => {
         this.imgFile = reader.result;
         this.myform.patchValue({
-          avatar: reader.result
+          avatar: reader.result,
         });
 
         // for image load or preview
@@ -63,7 +66,7 @@ export class PopupComponents implements OnInit {
 
         // 
 
-        
+
       };
     }
   }
@@ -102,6 +105,7 @@ export class PopupComponents implements OnInit {
       console.log("Updated Values in form", this.myform.value);
       this.myform.reset();
       this.bsModalRef.hide();
+   
 
     }
   }
