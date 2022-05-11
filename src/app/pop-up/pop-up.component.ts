@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { BsModalRef } from "ngx-bootstrap/modal";
 import { ApiService } from '../api.service';
+import Swal from 'sweetalert2'
+
 @Component({
   selector: 'app-pop-up',
   templateUrl: './pop-up.component.html',
@@ -86,13 +88,58 @@ export class PopupComponents implements OnInit {
   saveData() {
     if (!this.empdata) {
       if (this.myform.valid) {
-        console.log(this.myform.value);
-        this.myform.reset();
-        this.bsModalRef.hide();
-        alert("Data Added")
+        
+        Swal.fire({
+          title: 'Do You Want Add',
+          text: "",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, Add it!'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            Swal.fire(
+              'Saved',
+              'Data Saved Successfully',
+              'success',
+              
+            )
+            console.log(this.myform.value);
+            this.myform.reset();
+            this.bsModalRef.hide();
+
+          }
+          else
+          {
+            this.bsModalRef.hide();
+          }
+       
+
+        })
+       
+       
+       
+        // alert("Data Added")
       }
       else {
         this.message = "All Values Are Required";
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 2000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+          }
+        })
+        
+        Toast.fire({
+          icon: 'error',
+          title: 'All Values Are Required'
+        })
       }
     }
     else {
@@ -106,7 +153,23 @@ export class PopupComponents implements OnInit {
       console.log("Updated Values in form", this.myform.value);
       this.myform.reset();
       this.bsModalRef.hide();
-      alert("Updated")
+      // alert("Updated");
+      const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer)
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+      })
+      
+      Toast.fire({
+        icon: 'success',
+        title: 'Updated successfully'
+      })
 
 
     }
