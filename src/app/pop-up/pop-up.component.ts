@@ -18,7 +18,7 @@ export class PopupComponents implements OnInit {
   showimg: boolean = false;
   empdata: any;
   message: string = "";
-  imgFile!: string;
+  imgFile!: any;
   imageSrc: any;
 
   constructor(
@@ -28,7 +28,7 @@ export class PopupComponents implements OnInit {
 
   ngOnInit(): void {
     if (this.empdata) {
-      // console.log(this.empdata);
+      console.log(this.empdata);
       this.myform.controls["id"].setValue(this.empdata.id);
       this.myform.controls["fname"].setValue(this.empdata.first_name);
       this.myform.controls["lname"].setValue(this.empdata.last_name);
@@ -42,20 +42,28 @@ export class PopupComponents implements OnInit {
   }
 
   onFileChanged(e: any) {
-    const reader = new FileReader();
 
     if (e.target.files && e.target.files.length > 0) {
+      const reader = new FileReader();
       const [file] = e.target.files;
       reader.readAsDataURL(file);
 
       reader.onload = () => {
-        this.imgFile = reader.result as string;
+        this.imgFile = reader.result;
         this.myform.patchValue({
           avatar: reader.result
         });
-        const myfile = e.target.files[0];
-        reader.onload = e => this.imageSrc = reader.result as string;
-        reader.readAsDataURL(myfile);
+        
+        // for image load or preview
+        const reader1 = new FileReader();
+
+        const avatar = e.target.files[0];
+        reader1.onload = e => this.imageSrc = reader1.result;
+        reader1.readAsDataURL(avatar);
+
+        // 
+
+        
       };
     }
   }
