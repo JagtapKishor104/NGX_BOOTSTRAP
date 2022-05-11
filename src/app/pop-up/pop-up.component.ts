@@ -22,7 +22,7 @@ export class PopupComponents implements OnInit {
   imgFile!: any;
   imageSrc: any;
   logoimage!: string;
-  avatar!:string;
+  avatar!: string;
   constructor(
     public bsModalRef: BsModalRef,
     private fb: FormBuilder,
@@ -32,17 +32,17 @@ export class PopupComponents implements OnInit {
   ngOnInit(): void {
     if (this.empdata) {
       console.log(this.empdata);
-    this.avatar=this.empdata.avatar
-    
+      this.avatar = this.empdata.avatar
+
       this.myform.controls["id"].setValue(this.empdata.id);
       this.myform.controls["fname"].setValue(this.empdata.first_name);
       this.myform.controls["lname"].setValue(this.empdata.last_name);
       this.myform.controls["email"].setValue(this.empdata.email);
-      this.myform.controls["avatar"].setValue(this.empdata.avatar);
+      // this.myform.controls["avatar"].setValue(this.empdata.avatar);
     }
 
   }
-  
+
 
   onFileChanged(e: any) {
 
@@ -105,7 +105,7 @@ export class PopupComponents implements OnInit {
       console.log("Updated Values in form", this.myform.value);
       this.myform.reset();
       this.bsModalRef.hide();
-   
+
 
     }
   }
