@@ -13,15 +13,34 @@ export class AppComponent implements OnInit {
 
   bsModalRef?: BsModalRef;
   Data?: any;
-  searchString!:string;
-  // showimg:boolean=false;
-
+  searchString!: string;
+  rotate = true;
+  maxSize = 5;
+  status = "ON";
+  totalItems = 150;
+  itemsPerPage = 5;
+  config: any;
+  page: number = 1;
+  count: number = 0;
+  tableSize: number = 10;
+  tableSizes: any = [3, 6, 9, 12];
   constructor(
     private modalService: BsModalService,
     private api: ApiService
 
 
-  ) { }
+  ) {
+
+  }
+  onTableSizeChange(event: any): void {
+    this.tableSize = event.target.value;
+    this.page = 1;
+    this.getusers();
+  }
+  onTableDataChange(event: any) {
+    this.page = event;
+    this.getusers();
+  }
   ngOnInit(): void {
     this.getusers();
   }
@@ -30,7 +49,7 @@ export class AppComponent implements OnInit {
       next: (res) => {
         this.Data = res.data;
         // console.log(this.Data);
-      
+
       }
     })
   }
@@ -126,5 +145,89 @@ export class AppComponent implements OnInit {
     })
 
   }
+  Data1: any = [
+    {
+      id: 1,
+      first_name: "kishor",
+      last_name: "jagtap",
+      email: "jagtapkishor104@gmail.com",
+      avatar: "assets/rose.jpg"
+    },
+    {
+      id: 1,
+      first_name: "kishor",
+      last_name: "jagtap",
+      email: "jagtapkishor104@gmail.com",
+      avatar: "assets/rose.jpg"
+    },
+    {
+      id: 1,
+      first_name: "kishor",
+      last_name: "jagtap",
+      email: "jagtapkishor104@gmail.com",
+      avatar: "assets/rose.jpg"
+    }, {
+      id: 1,
+      first_name: "rahul",
+      last_name: "jagtap",
+      email: "jagtapkishor104@gmail.com",
+      avatar: "assets/rose.jpg"
+    }, {
+      id: 1,
+      first_name: "kishor",
+      last_name: "jagtap",
+      email: "jagtapkishor104@gmail.com",
+      avatar: "assets/rose.jpg"
+    }, {
+      id: 1,
+      first_name: "kishor",
+      last_name: "jagtap",
+      email: "jagtapkishor104@gmail.com",
+      avatar: "assets/rose.jpg"
+    }, {
+      id: 1,
+      first_name: "kishor",
+      last_name: "jagtap",
+      email: "jagtapkishor104@gmail.com",
+      avatar: "assets/rose.jpg"
+    }, {
+      id: 1,
+      first_name: "kishor",
+      last_name: "jagtap",
+      email: "jagtapkishor104@gmail.com",
+      avatar: "assets/rose.jpg"
+    }, {
+      id: 1,
+      first_name: "kishor",
+      last_name: "jagtap",
+      email: "jagtapkishor104@gmail.com",
+      avatar: "assets/rose.jpg"
+    }, {
+      id: 1,
+      first_name: "kishor",
+      last_name: "jagtap",
+      email: "jagtapkishor104@gmail.com",
+      avatar: "assets/rose.jpg"
+    }, {
+      id: 1,
+      first_name: "kishor",
+      last_name: "jagtap",
+      email: "jagtapkishor104@gmail.com",
+      avatar: "assets/rose.jpg"
+    }, {
+      id: 1,
+      first_name: "kishor",
+      last_name: "jagtap",
+      email: "jagtapkishor104@gmail.com",
+      avatar: "assets/rose.jpg"
+    }, {
+      id: 1,
+      first_name: "kishor",
+      last_name: "jagtap",
+      email: "jagtapkishor104@gmail.com",
+      avatar: "assets/rose.jpg"
+    },
+
+  ]
 
 }

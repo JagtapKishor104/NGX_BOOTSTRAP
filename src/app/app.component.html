@@ -2,22 +2,22 @@
   <nav class="navbar navbar-expand-lg navbar-light mt-3">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">Navbar</a>
-  
+
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <button type="button" class="btn btn-primary" (click)="openModalWithComponent()">Add Employee</button>
-  
+
       </ul>
-  
-  
+
+
     </div>
   </nav>
-  
-  
-  <input class="form-control mt-3 filter"   [(ngModel)]="searchString" placeholder="Search by anything ">
+
+
+  <input class="form-control mt-3 filter" [(ngModel)]="searchString" placeholder="Search by anything ">
 
   <div class="table-responsive  ">
     <table class=" table text-center table-hover table-striped table-bordered  mt-3">
-     
+
       <thead>
         <tr>
           <th>ID</th>
@@ -29,7 +29,10 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let d of Data | filter:searchString">
+        <tr *ngFor="let d of Data1 | filter:searchString | paginate:{itemsPerPage: tableSize,
+          currentPage: page,
+          totalItems: count
+        }">
           <td>{{d.id}}</td>
           <td>{{d.first_name}}</td>
           <td>{{d.last_name}}</td>
@@ -39,11 +42,15 @@
             <div class="d-flex justify-content-evenly">
               <button type="button" class="btn btn-primary" (click)="openEditComponent(d)">Edit</button>
               <button type="button" class="btn btn-danger" (click)="deleteData(d.id)">Delete</button>
-  
+
             </div>
           </td>
         </tr>
       </tbody>
     </table>
+    <!-- <pagination [totalItems]="totalItems" [rotate]="rotate" [maxSize]="maxSize" [itemsPerPage]="itemsPerPage"></pagination> -->
+    <pagination-controls previousLabel="Prev" nextLabel="Next" (pageChange)="onTableDataChange($event)">
+    </pagination-controls>
   </div>
+
 </div>
