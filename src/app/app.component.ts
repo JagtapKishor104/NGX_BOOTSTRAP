@@ -10,7 +10,6 @@ import Swal from 'sweetalert2';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-
   bsModalRef?: BsModalRef;
   Data?: any;
   searchString!: any;
