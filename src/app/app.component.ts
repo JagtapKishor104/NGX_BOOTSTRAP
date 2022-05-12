@@ -13,7 +13,7 @@ export class AppComponent implements OnInit {
 
   bsModalRef?: BsModalRef;
   Data?: any;
-  searchString!: string;
+  searchString!: any;
   rotate = true;
   maxSize = 5;
   status = "ON";
@@ -26,7 +26,7 @@ export class AppComponent implements OnInit {
   // tableSizes: any = [3, 6, 9, 12];
   dummyCates: any;
   str: any;
-  first_name:any;
+  first_name: any;
   constructor(
     private modalService: BsModalService,
     private api: ApiService
@@ -148,5 +148,5 @@ export class AppComponent implements OnInit {
     })
 
   }
- 
+
 }

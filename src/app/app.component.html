@@ -4,8 +4,7 @@
       <a class="navbar-brand" href="#">Navbar</a>
 
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-       
-        <button id="rzp-button1">Pay</button>
+
 
 
         <button type="button" class="btn btn-primary ms-5" (click)="openModalWithComponent()">Add Employee</button>
@@ -17,7 +16,8 @@
   </nav>
 
 
-  <input class="form-control mt-3 filter" name="searchString" [(ngModel)]="searchString" placeholder="Search by anything ">
+  <input class="form-control mt-3 filter" name="searchString" [(ngModel)]="searchString"
+    placeholder="Search in this Page">
 
   <div class="table-responsive  ">
     <table class=" table text-center table-hover table-striped table-bordered  mt-3">
@@ -33,10 +33,8 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let d of Data | filter:searchString | paginate:{itemsPerPage: tableSize,
-          currentPage: page,
-          totalItems: count
-        } ">
+        <tr
+          *ngFor="let d of Data | filter:searchString | paginate:{itemsPerPage: tableSize,currentPage: page,totalItems: count} ">
           <td>{{d.id}}</td>
           <td>{{d.first_name}}</td>
           <td>{{d.last_name}}</td>
@@ -55,51 +53,8 @@
     <div>
 
     </div>
-    <pagination-controls previousLabel="Prev" nextLabel="Next" (pageChange)="onTableDataChange($event)"></pagination-controls>
+    <pagination-controls previousLabel="Prev" nextLabel="Next" (pageChange)="onTableDataChange($event)">
+    </pagination-controls>
   </div>
 
 </div>
-<!-- 
-
-<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-<script>
-var options = {
-    "key": "rzp_test_59TBPKA4XWOoGX", // Enter the Key ID generated from the Dashboard
-    "amount": "500", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
-    "currency": "INR",
-    "name": "Acme Corp",
-    "description": "Test Transaction",
-    "image": "https://example.com/your_logo",
-    "order_id": "order_JUH1PwKz4BD7a7", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-    "handler": function (response){
-        alert(response.razorpay_payment_id);
-        alert(response.razorpay_order_id);
-        alert(response.razorpay_signature)
-    },
-    "prefill": {
-        "name": "Gaurav Kumar",
-        "email": "gaurav.kumar@example.com",
-        "contact": "9999999999"
-    },
-    "notes": {
-        "address": "Razorpay Corporate Office"
-    },
-    "theme": {
-        "color": "#3399cc"
-    }
-};
-var rzp1 = new Razorpay(options);
-rzp1.on('payment.failed', function (response){
-        alert(response.error.code);
-        alert(response.error.description);
-        alert(response.error.source);
-        alert(response.error.step);
-        alert(response.error.reason);
-        alert(response.error.metadata.order_id);
-        alert(response.error.metadata.payment_id);
-});
-document.getElementById('rzp-button1').onclick = function(e){
-    rzp1.open();
-    e.preventDefault();
-}
-</script>  -->
