@@ -23,7 +23,10 @@ export class AppComponent implements OnInit {
   page: number = 1;
   count: number = 0;
   tableSize: number = 10;
-  tableSizes: any = [3, 6, 9, 12];
+  // tableSizes: any = [3, 6, 9, 12];
+  dummyCates: any;
+  str: any;
+  first_name:any;
   constructor(
     private modalService: BsModalService,
     private api: ApiService
@@ -145,89 +148,5 @@ export class AppComponent implements OnInit {
     })
 
   }
-  Data1: any = [
-    {
-      id: 1,
-      first_name: "kishor",
-      last_name: "jagtap",
-      email: "jagtapkishor104@gmail.com",
-      avatar: "assets/rose.jpg"
-    },
-    {
-      id: 1,
-      first_name: "kishor",
-      last_name: "jagtap",
-      email: "jagtapkishor104@gmail.com",
-      avatar: "assets/rose.jpg"
-    },
-    {
-      id: 1,
-      first_name: "kishor",
-      last_name: "jagtap",
-      email: "jagtapkishor104@gmail.com",
-      avatar: "assets/rose.jpg"
-    }, {
-      id: 1,
-      first_name: "rahul",
-      last_name: "jagtap",
-      email: "jagtapkishor104@gmail.com",
-      avatar: "assets/rose.jpg"
-    }, {
-      id: 1,
-      first_name: "kishor",
-      last_name: "jagtap",
-      email: "jagtapkishor104@gmail.com",
-      avatar: "assets/rose.jpg"
-    }, {
-      id: 1,
-      first_name: "kishor",
-      last_name: "jagtap",
-      email: "jagtapkishor104@gmail.com",
-      avatar: "assets/rose.jpg"
-    }, {
-      id: 1,
-      first_name: "kishor",
-      last_name: "jagtap",
-      email: "jagtapkishor104@gmail.com",
-      avatar: "assets/rose.jpg"
-    }, {
-      id: 1,
-      first_name: "kishor",
-      last_name: "jagtap",
-      email: "jagtapkishor104@gmail.com",
-      avatar: "assets/rose.jpg"
-    }, {
-      id: 1,
-      first_name: "kishor",
-      last_name: "jagtap",
-      email: "jagtapkishor104@gmail.com",
-      avatar: "assets/rose.jpg"
-    }, {
-      id: 1,
-      first_name: "kishor",
-      last_name: "jagtap",
-      email: "jagtapkishor104@gmail.com",
-      avatar: "assets/rose.jpg"
-    }, {
-      id: 1,
-      first_name: "kishor",
-      last_name: "jagtap",
-      email: "jagtapkishor104@gmail.com",
-      avatar: "assets/rose.jpg"
-    }, {
-      id: 1,
-      first_name: "kishor",
-      last_name: "jagtap",
-      email: "jagtapkishor104@gmail.com",
-      avatar: "assets/rose.jpg"
-    }, {
-      id: 1,
-      first_name: "kishor",
-      last_name: "jagtap",
-      email: "jagtapkishor104@gmail.com",
-      avatar: "assets/rose.jpg"
-    },
-
-  ]
-
+ 
 }

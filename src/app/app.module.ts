@@ -11,6 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import {PaginationModule} from "ngx-bootstrap/pagination";
 import {NgxPaginationModule} from 'ngx-pagination';
+import { TableFilterPipe } from './table-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -27,8 +28,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
     ReactiveFormsModule,
     FormsModule,
     Ng2SearchPipeModule,
-    // PaginationModule.,
-    NgxPaginationModule
+    NgxPaginationModule,
 
   ],
   providers: [],
