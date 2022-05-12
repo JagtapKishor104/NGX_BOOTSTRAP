@@ -8,10 +8,12 @@ import { PopupComponents } from './pop-up/pop-up.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import {HttpClientModule} from "@angular/common/http";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 @NgModule({
   declarations: [
     AppComponent,
-    PopupComponents
+    PopupComponents,
+
   ],
   imports: [
     BrowserModule,
@@ -20,7 +22,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ModalModule.forRoot(),
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    Ng2SearchPipeModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -13,10 +13,11 @@
   </nav>
   
   
-  
+  <input class="form-control mt-3 filter"   [(ngModel)]="searchString" placeholder="Search by anything ">
+
   <div class="table-responsive  ">
-  
     <table class=" table text-center table-hover table-striped table-bordered  mt-3">
+     
       <thead>
         <tr>
           <th>ID</th>
@@ -28,7 +29,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let d of Data">
+        <tr *ngFor="let d of Data | filter:searchString">
           <td>{{d.id}}</td>
           <td>{{d.first_name}}</td>
           <td>{{d.last_name}}</td>

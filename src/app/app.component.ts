@@ -12,7 +12,8 @@ import Swal from 'sweetalert2';
 export class AppComponent implements OnInit {
 
   bsModalRef?: BsModalRef;
-  Data: any;
+  Data?: any;
+  searchString!:string;
   // showimg:boolean=false;
 
   constructor(
@@ -29,7 +30,7 @@ export class AppComponent implements OnInit {
       next: (res) => {
         this.Data = res.data;
         // console.log(this.Data);
-
+      
       }
     })
   }
@@ -125,4 +126,5 @@ export class AppComponent implements OnInit {
     })
 
   }
+
 }
